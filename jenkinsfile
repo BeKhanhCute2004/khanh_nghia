@@ -1,6 +1,6 @@
 pipeline {
 	agent any
-	stage {
+	stages {
 		stage('Clone stage') {
 			steps {
 				git credentialsID: 'hook-3', url: ''
