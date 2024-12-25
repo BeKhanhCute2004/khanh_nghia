@@ -3,7 +3,7 @@ pipeline {
 	stages {
 		stage('Clone stage') {
 			steps {
-				git credentialsID: 'hook-3', url: ''
+				git branch: 'master', url: 'https://github.com/BeKhanhCute2004/khanh_nghia.git'
 			}
         }
 		stage('Build docker stage') {
