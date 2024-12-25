@@ -1,0 +1,19 @@
+pipeline {
+	agent any
+	stage {
+		stage('Clone stage') {
+			steps {
+				git credentialsID: 'hook-3', url: ''
+			}
+        }
+		stage('Build docker stage') {
+			steps {
+				// This step should not normally be used in your script. Consult the inline help for details.
+                withDockerRegistry(credentialsId: '8a0d200f-d5d5-44f7-a394-0065550b69b1', url: 'https://index.docker.io/v1/') {
+                    sh 'docker build -t project3:latest .'
+                    sh 'docker push hiimkhanh/project3'
+                }
+			}
+	    }
+    }
+}
